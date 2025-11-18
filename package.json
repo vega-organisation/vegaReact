@@ -1,0 +1,65 @@
+{
+  "name": "vegareact",
+  "version": "1.0.0",
+  "description": "A modern React component library",
+  "type": "module",
+  "main": "./dist/vegareact.cjs",
+  "module": "./dist/vegareact.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/vegareact.es.js",
+      "require": "./dist/vegareact.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:lib": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@storybook/addon-docs": "^10.0.1",
+    "@storybook/addon-onboarding": "^10.0.1",
+    "@storybook/react-vite": "^10.0.1",
+    "@types/node": "^24.6.0",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.22",
+    "eslint-plugin-storybook": "^10.0.1",
+    "globals": "^16.4.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "storybook": "^10.0.1",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.45.0",
+    "vite": "^7.1.7",
+    "vite-plugin-dts": "^3.9.1"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "library",
+    "vega"
+  ],
+  "author": "",
+  "license": "MIT"
+}
