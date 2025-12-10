@@ -1,6 +1,9 @@
 name: ESLint
 
 on:
+  workflow_run:
+    workflows: ["Declutter"]
+    types: [completed]
   pull_request:
     branches: [ "main" ]
 
