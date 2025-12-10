@@ -1,0 +1,173 @@
+/* Wrapper */
+.vega-input-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-sizing: border-box;
+}
+
+.vega-input-wrapper--full-width {
+  width: 100%;
+}
+
+/* Label */
+.vega-input__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Container (border + icons) */
+.vega-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+.vega-input-container:hover:not(.vega-input-container--disabled) {
+  border-color: #9ca3af;
+}
+
+.vega-input-container:focus-within:not(.vega-input-container--disabled) {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  outline: none;
+}
+
+/* Sizes */
+.vega-input-container--sm {
+  height: 2rem;
+  padding: 0 0.5rem;
+}
+
+.vega-input-container--md {
+  height: 2.5rem;
+  padding: 0 0.75rem;
+}
+
+.vega-input-container--lg {
+  height: 3rem;
+  padding: 0 1rem;
+}
+
+/* States */
+.vega-input-container--error {
+  border-color: #dc3545;
+}
+
+.vega-input-container--error:focus-within {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.vega-input-container--success {
+  border-color: #28a745;
+}
+
+.vega-input-container--success:focus-within {
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.vega-input-container--disabled {
+  background-color: #f3f4f6;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Input */
+.vega-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.vega-input::placeholder {
+  color: #9ca3af;
+}
+
+.vega-input:disabled {
+  cursor: not-allowed;
+  color: #6b7280;
+}
+
+/* Input with icons - add padding */
+.vega-input--with-icon-left {
+  padding-left: 0.5rem;
+}
+
+.vega-input--with-icon-right {
+  padding-right: 0.5rem;
+}
+
+/* Icons */
+.vega-input__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #6b7280;
+  font-size: 1.125rem;
+}
+
+.vega-input__icon--left {
+  margin-right: 0.5rem;
+}
+
+.vega-input__icon--right {
+  margin-left: 0.5rem;
+}
+
+.vega-input-container--error .vega-input__icon {
+  color: #dc3545;
+}
+
+.vega-input-container--success .vega-input__icon {
+  color: #28a745;
+}
+
+/* Message (helper text or error) */
+.vega-input__message {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+.vega-input__message--error {
+  color: #dc3545;
+}
+
+/* Size-specific font sizes */
+.vega-input-container--sm .vega-input {
+  font-size: 0.875rem;
+}
+
+.vega-input-container--md .vega-input {
+  font-size: 1rem;
+}
+
+.vega-input-container--lg .vega-input {
+  font-size: 1.125rem;
+}
+
+.vega-input-container--sm .vega-input__icon {
+  font-size: 1rem;
+}
+
+.vega-input-container--lg .vega-input__icon {
+  font-size: 1.25rem;
+}
