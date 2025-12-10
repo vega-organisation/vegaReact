@@ -8,9 +8,9 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/vegareact.es.js",
-      "require": "./dist/vegareact.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/vegareact.cjs"
     },
     "./dist/style.css": "./dist/style.css"
   },
