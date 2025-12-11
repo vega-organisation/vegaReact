@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
@@ -8,13 +8,25 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * La variante du bouton
    */
-  variant?: 'primary' | 'secondary' | 'danger' | 'success';
+  variant?: "primary" | "secondary" | "danger" | "success";
   /**
    * La taille du bouton
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   /**
    * Bouton en pleine largeur
    */
   fullWidth?: boolean;
+  /**
+   * L'icône à afficher dans le bouton
+   */
+  icon?: ReactNode;
+  /**
+   * La position de l'icône
+   */
+  iconPos?: "left" | "right" | "top" | "bottom";
+  /**
+   * Outline
+   */
+  outline?: boolean;
 }
