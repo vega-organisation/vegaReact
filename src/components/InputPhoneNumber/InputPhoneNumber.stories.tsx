@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import { InputPhoneNumber } from "./InputPhoneNumber";
 import { useState } from "react";
 
@@ -180,7 +180,6 @@ export const FullWidth: Story = {
   args: {
     label: "Téléphone",
     value: "+33 6 12 34 56 78",
-    fullWidth: true,
   },
   parameters: {
     layout: "padded",
