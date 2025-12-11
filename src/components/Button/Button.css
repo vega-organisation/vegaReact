@@ -4,11 +4,11 @@
   justify-content: center;
   border: none;
   border-radius: 6px;
-  font-weight: 500;
+  font-weight: var(--font-weight-normal);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  font-family: inherit;
-  line-height: 1;
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -35,17 +35,17 @@
 /* Sizes */
 .vega-button--small {
   padding: 0.375rem 0.75rem;
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }
 
 .vega-button--medium {
   padding: 0.625rem 1.25rem;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
 }
 
 .vega-button--large {
   padding: 0.875rem 1.75rem;
-  font-size: 1.125rem;
+  font-size: var(--font-size-md);
 }
 
 /* Variants */
