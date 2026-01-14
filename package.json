@@ -63,5 +63,8 @@
     "vega"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react-phone-number-input": "^3.4.14"
+  }
 }
