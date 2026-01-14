@@ -1,18 +1,14 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Le contenu de la carte
    */
-  children: ReactNode;
+  children?: ReactNode;
   /**
    * La variante de la carte
    */
-  variant?: 'default' | 'outlined' | 'interactive';
-  /**
-   * L'état de la carte
-   */
-  state?: 'default' | 'hover' | 'selected' | 'disabled';
+  variant?: 'default' | 'outlined';
   /**
    * Image d'en-tête optionnelle
    */
@@ -34,11 +30,11 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
    */
   padding?: 'none' | 'small' | 'medium' | 'large';
   /**
-   * Si la carte est interactive (clickable)
+   * Si la carte est sélectionnée
    */
-  interactive?: boolean;
+  selected?: boolean;
   /**
-   * Fonction appelée au clic (rend la carte interactive)
+   * Si la carte est désactivée
    */
-  onClick?: () => void;
+  disabled?: boolean;
 }

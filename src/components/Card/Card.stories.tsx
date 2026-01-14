@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { fn } from "storybook/test";
 
 import { Card } from "./Card";
 
@@ -13,13 +12,8 @@ const meta = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "outlined", "interactive"],
+      options: ["default", "outlined"],
       description: "La variante de la carte",
-    },
-    state: {
-      control: "select",
-      options: ["default", "hover", "selected", "disabled"],
-      description: "L'état de la carte",
     },
     padding: {
       control: "select",
@@ -31,9 +25,13 @@ const meta = {
       options: ["16:9", "1:1", "4:3"],
       description: "Ratio de l'image d'en-tête",
     },
-    interactive: {
+    selected: {
       control: "boolean",
-      description: "Carte interactive (clickable)",
+      description: "Carte sélectionnée",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Carte désactivée",
     },
     title: {
       control: "text",
@@ -48,7 +46,6 @@ const meta = {
       description: "URL de l'image d'en-tête",
     },
   },
-  args: { onClick: fn() },
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -73,11 +70,10 @@ export const Outlined: Story = {
 
 export const Interactive: Story = {
   args: {
-    variant: "interactive",
-    interactive: true,
     title: "Interactive Card",
     subtitle: "Click me!",
     children: "This card is clickable and has hover effects.",
+    onClick: () => alert("Card clicked!"),
   },
 };
 
@@ -102,7 +98,7 @@ export const SquareImage: Story = {
 
 export const Selected: Story = {
   args: {
-    state: "selected",
+    selected: true,
     title: "Selected Card",
     subtitle: "This card is selected",
     children: "Card in selected state with blue border.",
@@ -111,7 +107,7 @@ export const Selected: Story = {
 
 export const Disabled: Story = {
   args: {
-    state: "disabled",
+    disabled: true,
     title: "Disabled Card",
     subtitle: "This card is disabled",
     children: "Card in disabled state with reduced opacity.",
@@ -147,13 +143,12 @@ export const NoPadding: Story = {
 
 export const CompleteExample: Story = {
   args: {
-    variant: "interactive",
-    interactive: true,
     title: "Complete Card Example",
     subtitle: "All features combined",
     headerImage: "https://via.placeholder.com/800x450",
     imageRatio: "16:9",
     padding: "medium",
+    onClick: () => alert("Card clicked!"),
     children: (
       <>
         <p style={{ margin: "0 0 1rem 0" }}>
@@ -167,6 +162,10 @@ export const CompleteExample: Story = {
             backgroundColor: "#007bff",
             color: "white",
             cursor: "pointer",
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            alert("Button clicked!");
           }}
         >
           Action Button

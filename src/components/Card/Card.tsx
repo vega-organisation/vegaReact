@@ -4,48 +4,48 @@ import "./Card.css";
 export const Card: React.FC<CardProps> = ({
   children,
   variant = "default",
-  state = "default",
   headerImage,
   imageRatio = "16:9",
   title,
   subtitle,
   padding = "medium",
-  interactive = false,
+  selected = false,
+  disabled = false,
   className = "",
   onClick,
   ...props
 }) => {
-  const isInteractive = interactive || !!onClick;
-  const isDisabled = state === "disabled";
+  const isInteractive = !!onClick;
 
   const classes = [
     "vega-card",
     `vega-card--${variant}`,
-    `vega-card--${state}`,
     `vega-card--padding-${padding}`,
     isInteractive ? "vega-card--interactive" : "",
+    selected ? "vega-card--selected" : "",
+    disabled ? "vega-card--disabled" : "",
     className,
   ]
     .filter(Boolean)
     .join(" ");
 
   const handleClick = () => {
-    if (onClick && !isDisabled) {
+    if (onClick && !disabled) {
       onClick();
     }
   };
 
   const Element = isInteractive ? "article" : "div";
   const role = isInteractive ? "button" : undefined;
-  const tabIndex = isInteractive && !isDisabled ? 0 : undefined;
+  const tabIndex = isInteractive && !disabled ? 0 : undefined;
 
   return (
     <Element
       className={classes}
-      onClick={handleClick}
+      onClick={isInteractive ? handleClick : undefined}
       role={role}
       tabIndex={tabIndex}
-      aria-disabled={isDisabled}
+      aria-disabled={disabled ? true : undefined}
       {...props}
     >
       {headerImage && (
