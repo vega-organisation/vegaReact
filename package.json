@@ -26,7 +26,7 @@
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "knip": "knip"
+    "knip": "knip --include files,exports,types"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
