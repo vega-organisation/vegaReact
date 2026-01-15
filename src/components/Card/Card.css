@@ -4,9 +4,11 @@
   border: 1px solid var(--border-default, #d1d5db);
   border-radius: 0.5rem;
   background-color: var(--bg-surface, #ffffff);
+  color: var(--text-main, #111827);
   box-sizing: border-box;
   transition: all 0.2s ease-in-out;
   overflow: hidden;
+  padding: 20px;
 
   &:focus {
     outline: 2px solid var(--border-focus, #000000);
@@ -76,28 +78,25 @@
 
   /* Header */
   &__header {
-    position: relative;
     width: 100%;
     overflow: hidden;
     background-color: var(--bg-disabled, #f3f4f6);
 
     &--16\:9 {
-      padding-bottom: 56.25%; /* 9/16 = 0.5625 */
+      aspect-ratio: 16 / 9;
     }
 
     &--1\:1 {
-      padding-bottom: 100%;
+      aspect-ratio: 1 / 1;
     }
 
     &--4\:3 {
-      padding-bottom: 75%; /* 3/4 = 0.75 */
+      aspect-ratio: 4 / 3;
     }
   }
 
   &__header-image {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -114,14 +113,13 @@
     margin: 0 0 0.5rem 0;
     font-size: 1.25rem;
     font-weight: 600;
-    line-height: 1.4;
-    color: var(--text-main, #111827);
+    line-height: 1.5;
   }
 
   &__subtitle {
     margin: 0 0 1rem 0;
     font-size: 0.875rem;
-    line-height: 1.5;
+    line-height: 1.6;
     color: var(--text-secondary, #d1d5db);
   }
 }
