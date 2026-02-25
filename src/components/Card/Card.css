@@ -27,6 +27,7 @@
   /* Interactive */
   &--interactive {
     cursor: pointer;
+    border: 1px solid var(--border-interactive, #d1d5db);
 
     &:hover:not(.vega-card--disabled) {
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);

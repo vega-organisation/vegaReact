@@ -3,4 +3,6 @@ export type { ButtonProps } from './components/Button/Button.types';
 export { InputText } from './components/InputText';
 export type { InputTextProps } from './components/InputText/InputText.types';
 export { Card } from './components/Card';
-export type { CardProps } from './components/Card/Card.types'
+export type { CardProps } from './components/Card/Card.types';
+export { InputEmail } from './components/InputEmail';
+export type { InputEmailProps } from './components/InputEmail/InputEmail.types';
