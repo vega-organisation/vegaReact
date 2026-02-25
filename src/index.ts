@@ -4,3 +4,5 @@ export { InputText } from './components/InputText';
 export type { InputTextProps } from './components/InputText/InputText.types';
 export { PhoneNumberInput } from './components/PhoneNumberInput';
 export type { PhoneNumberInputProps } from './components/PhoneNumberInput/PhoneNumberInput.types';
+export { ToastProvider, useToast } from './components/Toast';
+export type { ToastProviderProps, ToastData, ToastVariant, ToastPosition } from './components/Toast/Toast.types';
