@@ -37,6 +37,7 @@
     "@storybook/addon-docs": "^10.2.12",
     "@storybook/addon-onboarding": "^10.2.12",
     "@storybook/react-vite": "^10.2.12",
+    "@storybook/blocks": "^9.0.0-alpha.17",
     "@types/node": "^24.10.2",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
