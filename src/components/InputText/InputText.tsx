@@ -1,6 +1,6 @@
 import React, { useId } from 'react';
 import type { InputTextProps } from "./InputText.types";
-import "./InputText.css"; 
+import "./InputText.css";
 
 export const InputText: React.FC<InputTextProps> = ({
   label,
@@ -11,12 +11,12 @@ export const InputText: React.FC<InputTextProps> = ({
   className = "",
   id,
   disabled = false,
-  ...props 
+  ...props
 }) => {
-  
+
   const generatedId = useId();
   const inputId = id || generatedId;
-  
+
   const containerClasses = [
     "vega-input-wrapper",
     fullWidth ? "vega-input-wrapper--full-width" : "",
@@ -40,7 +40,7 @@ export const InputText: React.FC<InputTextProps> = ({
           {label}
         </label>
       )}
-      
+
       <input
         id={inputId}
         className={inputClasses}
