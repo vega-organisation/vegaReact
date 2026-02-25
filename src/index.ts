@@ -6,3 +6,5 @@ export { Card } from './components/Card';
 export type { CardProps } from './components/Card/Card.types';
 export { InputEmail } from './components/InputEmail';
 export type { InputEmailProps } from './components/InputEmail/InputEmail.types';
+export { PhoneNumberInput } from './components/PhoneNumberInput';
+export type { PhoneNumberInputProps } from './components/PhoneNumberInput/PhoneNumberInput.types';
