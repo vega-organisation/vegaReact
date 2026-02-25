@@ -67,5 +67,6 @@
   "dependencies": {
     "@storybook/test": "^8.6.15",
     "lucide-react": "^0.562.0"
+    "react-phone-number-input": "^3.4.14"
   }
 }
