@@ -1,0 +1,125 @@
+.vega-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-default, #d1d5db);
+  border-radius: 0.5rem;
+  background-color: var(--bg-surface, #ffffff);
+  color: var(--text-main, #111827);
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  padding: 20px;
+
+  &:focus {
+    outline: 2px solid var(--border-focus, #000000);
+    outline-offset: 2px;
+  }
+
+  /* Variants */
+  &--default {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &--outlined {
+    box-shadow: none;
+  }
+
+  /* Interactive */
+  &--interactive {
+    cursor: pointer;
+
+    &:hover:not(.vega-card--disabled) {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    &:active:not(.vega-card--disabled) {
+      transform: translateY(0);
+    }
+  }
+
+  /* Selected */
+  &--selected {
+    border: 2px solid var(--color-primary, #6d28d9);
+    box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
+  }
+
+  /* Disabled */
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* Padding */
+  &--padding-none {
+    & .vega-card__content {
+      padding: 0;
+    }
+  }
+
+  &--padding-small {
+    & .vega-card__content {
+      padding: 0.75rem;
+    }
+  }
+
+  &--padding-medium {
+    & .vega-card__content {
+      padding: 1.25rem;
+    }
+  }
+
+  &--padding-large {
+    & .vega-card__content {
+      padding: 1.75rem;
+    }
+  }
+
+  /* Header */
+  &__header {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--bg-disabled, #f3f4f6);
+
+    &--16\:9 {
+      aspect-ratio: 16 / 9;
+    }
+
+    &--1\:1 {
+      aspect-ratio: 1 / 1;
+    }
+
+    &--4\:3 {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  &__header-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Content */
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  &__subtitle {
+    margin: 0 0 1rem 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--text-secondary, #d1d5db);
+  }
+}
