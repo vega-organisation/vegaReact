@@ -5,7 +5,7 @@ on:
     workflows: ["Declutter"]
     types: [completed]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   lint:
@@ -15,5 +15,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 22
-      - run: npm ci
+      - run: npm install --legacy-peer-deps
       - run: npm run lint
