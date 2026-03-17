@@ -26,7 +26,8 @@
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "knip": "knip --include files,exports,types"
+    "knip": "knip --include files,exports,types",
+    "publish:ci": "npm run build && npm publish --access public"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
@@ -36,8 +37,8 @@
     "@eslint/js": "^9.36.0",
     "@storybook/addon-docs": "^10.2.12",
     "@storybook/addon-onboarding": "^10.2.12",
-    "@storybook/react-vite": "^10.2.12",
     "@storybook/blocks": "^9.0.0-alpha.17",
+    "@storybook/react-vite": "^10.2.12",
     "@types/node": "^24.10.2",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
@@ -63,11 +64,14 @@
     "library",
     "vega"
   ],
-  "author": "",
+  "author": "Vega Organisation",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@storybook/test": "^8.6.15",
     "lucide-react": "^0.562.0",
-    "react-phone-number-input": "^3.4.14"
+    "react-phone-number-input": "^3.4.16"
   }
 }
