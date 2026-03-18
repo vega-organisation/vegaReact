@@ -1,0 +1,211 @@
+/* Container */
+
+.vega-toast-container {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+  max-width: 420px;
+  width: calc(100vw - 2rem);
+
+  &.vega-toast-container--top-right {
+    top: 1rem;
+    right: 1rem;
+    align-items: flex-end;
+  }
+
+  &.vega-toast-container--top-left {
+    top: 1rem;
+    left: 1rem;
+    align-items: flex-start;
+  }
+
+  &.vega-toast-container--top-center {
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+  }
+
+  &.vega-toast-container--bottom-right {
+    bottom: 1rem;
+    right: 1rem;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+  }
+
+  &.vega-toast-container--bottom-left {
+    bottom: 1rem;
+    left: 1rem;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+  }
+
+  &.vega-toast-container--bottom-center {
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+}
+
+/* Toast item */
+
+.vega-toast {
+  pointer-events: all;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.875rem 1rem 0 1rem;
+  background-color: var(--bg-surface, #ffffff);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid transparent;
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  position: relative;
+  animation: vega-toast-enter 0.25s ease forwards;
+
+  &.vega-toast--exiting {
+    animation: vega-toast-exit 0.3s ease forwards;
+  }
+
+  &.vega-toast--success {
+    border-left-color: var(--color-success, #22c55e);
+
+    & .vega-toast-icon {
+      color: var(--color-success, #22c55e);
+    }
+  }
+
+  &.vega-toast--error {
+    border-left-color: var(--color-error, #ef4444);
+
+    & .vega-toast-icon {
+      color: var(--color-error, #ef4444);
+    }
+  }
+
+  &.vega-toast--warning {
+    border-left-color: #f59e0b;
+
+    & .vega-toast-icon {
+      color: #f59e0b;
+    }
+  }
+
+  &.vega-toast--info {
+    border-left-color: var(--color-primary, #6d28d9);
+
+    & .vega-toast-icon {
+      color: var(--color-primary, #6d28d9);
+    }
+  }
+}
+
+.vega-toast-icon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  display: flex;
+}
+
+.vega-toast-content {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 0.875rem;
+}
+
+.vega-toast-title {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main, #111827);
+  line-height: 1.25;
+}
+
+.vega-toast-message {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-main, #111827);
+  line-height: 1.4;
+}
+
+.vega-toast-close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.125rem;
+  color: var(--text-secondary, #9ca3af);
+  border-radius: 0.25rem;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  margin-top: 0.125rem;
+
+  &:hover {
+    color: var(--text-main, #111827);
+    background-color: var(--neutral-100, #f3f4f6);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--border-focus, #111827);
+    outline-offset: 2px;
+  }
+}
+
+/* Progress bar */
+
+.vega-toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: currentColor;
+  opacity: 0.25;
+  animation: vega-toast-progress var(--toast-duration, 4000ms) linear forwards;
+  transform-origin: left;
+}
+
+/* Animations */
+
+@keyframes vega-toast-enter {
+  from {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes vega-toast-exit {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+    max-height: 200px;
+    margin-bottom: 0;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(1rem);
+    max-height: 0;
+    margin-bottom: -0.5rem;
+  }
+}
+
+@keyframes vega-toast-progress {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
