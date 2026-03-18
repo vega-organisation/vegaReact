@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, ReactNode } from 'react';
 
-export interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputTextProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
 
   label?: ReactNode;
 
