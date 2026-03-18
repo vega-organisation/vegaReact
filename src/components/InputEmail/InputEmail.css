@@ -1,0 +1,151 @@
+.vega-email-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  width: auto;
+
+  &.vega-email-wrapper--full-width {
+    width: 100%;
+  }
+}
+
+.vega-email-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-main, #111827);
+  cursor: pointer;
+  margin-bottom: 0.25rem;
+}
+
+.vega-email-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--bg-surface, #ffffff);
+  border: 1px solid var(--border-default, #d1d5db);
+  border-radius: 0.375rem;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  width: 100%;
+
+  &:hover:not(.vega-email-field--disabled) {
+    border-color: var(--border-focus, #000000);
+  }
+
+  &:focus-within {
+    border-color: var(--border-focus, #000000);
+  }
+
+  &:has(input:focus-visible) {
+    outline: 2px solid var(--border-focus, #000000);
+    outline-offset: 2px;
+  }
+
+  &.vega-email-field--small {
+    padding: 0.5rem 0.75rem;
+  }
+
+  &.vega-email-field--medium {
+    padding: 0.75rem 1rem;
+  }
+
+  &.vega-email-field--large {
+    padding: 1rem 1.25rem;
+  }
+
+  &.vega-email-field--error {
+    border-color: var(--color-error, #ef4444);
+
+    &:hover:not(.vega-email-field--disabled) {
+      border-color: var(--color-error, #ef4444);
+    }
+
+    &:focus-within {
+      border-color: var(--color-error, #ef4444);
+      box-shadow: 0 0 0 1px var(--color-error, #ef4444);
+    }
+  }
+
+  &.vega-email-field--success {
+    border-color: var(--color-success, #22c55e);
+
+    &:hover:not(.vega-email-field--disabled) {
+      border-color: var(--color-success, #22c55e);
+    }
+
+    &:focus-within {
+      border-color: var(--color-success, #22c55e);
+      box-shadow: 0 0 0 1px var(--color-success, #22c55e);
+    }
+  }
+
+  &.vega-email-field--disabled {
+    background-color: var(--bg-disabled, #f3f4f6);
+    border-color: var(--neutral-200, #e5e7eb);
+    cursor: not-allowed;
+  }
+}
+
+.vega-email-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-main, #111827);
+  min-width: 0;
+
+  &::placeholder {
+    color: var(--text-secondary, #9ca3af);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: var(--text-secondary, #9ca3af);
+  }
+
+  .vega-email-field--small & {
+    font-size: 0.875rem;
+  }
+
+  .vega-email-field--large & {
+    font-size: 1.125rem;
+  }
+}
+
+.vega-email-icon-lead {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--text-secondary, #9ca3af);
+}
+
+.vega-email-icon-trail {
+  display: flex;
+  flex-shrink: 0;
+
+  &.vega-email-icon-trail--error {
+    color: var(--color-error, #ef4444);
+  }
+
+  &.vega-email-icon-trail--success {
+    color: var(--color-success, #22c55e);
+  }
+}
+
+.vega-email-helper {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  color: var(--text-secondary, #6b7280);
+
+  &.vega-email-helper--error {
+    color: var(--color-error, #ef4444);
+  }
+
+  &.vega-email-helper--success {
+    color: var(--color-success, #22c55e);
+  }
+}
