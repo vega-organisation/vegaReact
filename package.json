@@ -1,6 +1,6 @@
 {
   "name": "vega-react-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A modern React component library",
   "type": "module",
   "main": "./dist/vegareact.cjs",
@@ -59,10 +59,14 @@
     "library",
     "vega"
   ],
-  "author": "Vega Organisation",
+  "author": "vegacomponents",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vega-organisation/vegaReact.git"
   },
   "dependencies": {
     "lucide-react": "^0.562.0",
