@@ -1,0 +1,48 @@
+.context-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.context-menu-items {
+  display: none;
+  position: absolute;
+  background: white;
+  color: black;
+  border: 1px solid #ccc;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.context-menu:hover .context-menu-items {
+  display: block;
+}
+
+.context-menu-item {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.context-menu-item:hover {
+  background: #f0f0f0;
+}
+
+/* Ajoutez ces classes pour forcer un fond noir */
+.context-menu-dark {
+  background-color: #000; /* Fond noir */
+  color: #fff; /* Texte blanc */
+}
+
+.context-menu-dark .context-menu-items {
+  background-color: #000; /* Fond noir pour le menu */
+  color: #fff; /* Texte blanc */
+}
+
+.context-menu-dark .context-menu-item {
+  color: #fff; /* Texte blanc */
+}
+
+.context-menu-dark .context-menu-item:hover {
+  background-color: #333; /* Fond légèrement plus clair au survol */
+  color: #fff; /* Texte blanc */
+}

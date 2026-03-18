@@ -1,126 +1,157 @@
+/* Base */
+
 .vega-card {
+  --vega-card-bg: var(--bg-surface, #ffffff);
+  --vega-card-radius: 0.75rem;
+  --vega-card-border-color: var(--border-default, #d1d5db);
+  --vega-card-border-width: 1px;
+  --vega-card-text-color: var(--text-main, #111827);
+  --vega-card-font-size: 0.9375rem;
+  --vega-card-padding: 1.25rem;
+  --vega-card-gap: 0.75rem;
+  --vega-card-media-bg: var(--neutral-200, #e5e7eb);
+  --vega-card-focus-color: var(--color-primary, #6d28d9);
+  --vega-card-hover-lift: -5px;
+  --vega-card-shadow: none;
+  --vega-card-shadow-hover: none;
+  --vega-card-transition-duration: 0.25s;
+
+  position: relative;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border-default, #d1d5db);
-  border-radius: 0.5rem;
-  background-color: var(--bg-surface, #ffffff);
-  color: var(--text-main, #111827);
-  box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
+  background-color: var(--vega-card-bg);
+  border-radius: var(--vega-card-radius);
   overflow: hidden;
-  padding: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+  transition:
+    transform var(--vega-card-transition-duration) cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow var(--vega-card-transition-duration) ease;
 
-  &:focus {
-    outline: 2px solid var(--border-focus, #000000);
-    outline-offset: 2px;
-  }
-
-  /* Variants */
-  &--default {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  &--outlined {
-    box-shadow: none;
-  }
-
-  /* Interactive */
-  &--interactive {
-    cursor: pointer;
-    border: 1px solid var(--border-interactive, #d1d5db);
-
-    &:hover:not(.vega-card--disabled) {
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-      transform: translateY(-2px);
-    }
-
-    &:active:not(.vega-card--disabled) {
-      transform: translateY(0);
-    }
-  }
-
-  /* Selected */
-  &--selected {
-    border: 2px solid var(--color-primary, #6d28d9);
-    box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
-  }
-
-  /* Disabled */
-  &--disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  /* Shine overlay */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.06) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
     pointer-events: none;
   }
+}
 
-  /* Padding */
-  &--padding-none {
-    & .vega-card__content {
-      padding: 0;
+/* Variants */
+
+.vega-card--default {
+  border: var(--vega-card-border-width) solid var(--vega-card-border-color);
+  box-shadow: var(--vega-card-shadow);
+}
+
+.vega-card--elevated {
+  --vega-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+  --vega-card-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.08), 0 12px 28px rgba(0, 0, 0, 0.1);
+
+  border: none;
+  box-shadow: var(--vega-card-shadow);
+
+  &:hover {
+    box-shadow: var(--vega-card-shadow-hover);
+  }
+}
+
+.vega-card--outlined {
+  --vega-card-border-width: 2px;
+
+  border: var(--vega-card-border-width) solid var(--vega-card-border-color);
+  box-shadow: none;
+}
+
+.vega-card--interactive {
+  --vega-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --vega-card-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.1), 0 20px 40px rgba(0, 0, 0, 0.08);
+
+  border: var(--vega-card-border-width) solid var(--vega-card-border-color);
+  cursor: pointer;
+  box-shadow: var(--vega-card-shadow);
+
+  &:hover {
+    transform: translateY(var(--vega-card-hover-lift));
+    box-shadow: var(--vega-card-shadow-hover);
+    border-color: var(--vega-card-focus-color);
+
+    &::after {
+      opacity: 1;
     }
   }
 
-  &--padding-small {
-    & .vega-card__content {
-      padding: 0.75rem;
-    }
+  &:active {
+    transform: translateY(-2px);
+    box-shadow:
+      0 4px 10px rgba(0, 0, 0, 0.08),
+      0 8px 20px rgba(0, 0, 0, 0.06);
   }
 
-  &--padding-medium {
-    & .vega-card__content {
-      padding: 1.25rem;
-    }
+  &:focus-visible {
+    outline: 2px solid var(--vega-card-focus-color);
+    outline-offset: 3px;
   }
+}
 
-  &--padding-large {
-    & .vega-card__content {
-      padding: 1.75rem;
-    }
+/* Media */
+
+.vega-card-media {
+  width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: var(--vega-card-media-bg);
+
+  &.vega-card-media--16-9 { aspect-ratio: 16 / 9; }
+  &.vega-card-media--4-3  { aspect-ratio: 4 / 3;  }
+  &.vega-card-media--1-1  { aspect-ratio: 1 / 1;  }
+  &.vega-card-media--3-4  { aspect-ratio: 3 / 4;  }
+}
+
+.vega-card-media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  .vega-card--interactive:hover & {
+    transform: scale(1.04);
   }
+}
 
-  /* Header */
-  &__header {
-    width: 100%;
-    overflow: hidden;
-    background-color: var(--bg-disabled, #f3f4f6);
+/* Header */
 
-    &--16\:9 {
-      aspect-ratio: 16 / 9;
-    }
+.vega-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--vega-card-gap);
+  padding: var(--vega-card-padding) var(--vega-card-padding) 0 var(--vega-card-padding);
+}
 
-    &--1\:1 {
-      aspect-ratio: 1 / 1;
-    }
+/* Body */
 
-    &--4\:3 {
-      aspect-ratio: 4 / 3;
-    }
-  }
+.vega-card-body {
+  padding: 1rem var(--vega-card-padding);
+  flex: 1;
+  font-size: var(--vega-card-font-size);
+  color: var(--vega-card-text-color);
+  line-height: 1.6;
+}
 
-  &__header-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+/* Footer */
 
-  /* Content */
-  &__content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__title {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.5;
-  }
-
-  &__subtitle {
-    margin: 0 0 1rem 0;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: var(--text-secondary, #d1d5db);
-  }
+.vega-card-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--vega-card-gap);
+  padding: 0 var(--vega-card-padding) var(--vega-card-padding) var(--vega-card-padding);
 }

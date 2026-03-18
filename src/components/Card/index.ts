@@ -1,2 +1,2 @@
 export { Card } from './Card';
-export type { CardProps } from './Card.types';
+export type { CardProps, CardVariant, CardMediaProps, CardHeaderProps, CardBodyProps, CardFooterProps } from './Card.types';

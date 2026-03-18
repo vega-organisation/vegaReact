@@ -187,7 +187,8 @@ export const Default: Story = {
 
 - Always include stories for: all variants, all sizes, disabled state, full-width
 - For stateful components (controlled inputs), wrap with a `RenderWithState` helper (see `PhoneNumberInput.stories.tsx` for reference)
-- Use `fn()` from `@storybook/test` for event callbacks
+- don't use `@storybook/test` for now unless package as a version >= to the current `@storybook` package
+
 
 ---
 

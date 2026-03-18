@@ -21,13 +21,8 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-  &:active:not(:disabled) {
-    transform: translateY(0);
-  }
-
-.vega-button:focus-visible {
-  outline: 2px solid var(--border-focus, #000000);
-  outline-offset: 2px;
+.vega-button:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .vega-button:focus-visible {
