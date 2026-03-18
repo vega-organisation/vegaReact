@@ -16,3 +16,5 @@ export { Card } from "./components/Card";
 export type { CardProps, CardVariant, CardMediaProps, CardHeaderProps, CardBodyProps, CardFooterProps } from "./components/Card/Card.types";
 export { InputEmail } from "./components/InputEmail";
 export type { InputEmailProps } from "./components/InputEmail/InputEmail.types";
+export { Dialog } from "./components/Dialog";
+export type { DialogProps, DialogSize, DialogHeaderProps, DialogBodyProps, DialogFooterProps } from "./components/Dialog/Dialog.types";
