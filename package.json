@@ -32,9 +32,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
-    "@storybook/addon-docs": "^10.2.12",
     "@storybook/addon-onboarding": "^10.2.12",
-    "@storybook/blocks": "^9.0.0-alpha.17",
     "@storybook/react-vite": "^10.2.12",
     "@types/node": "^24.10.2",
     "@types/react": "^19.1.16",
@@ -67,7 +65,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@storybook/test": "^8.6.15",
     "lucide-react": "^0.562.0",
     "react-phone-number-input": "^3.4.16"
   }
