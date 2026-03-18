@@ -14,3 +14,5 @@ export { Loader } from "./components/Loader";
 export type { LoaderProps, LoaderVariant } from "./components/Loader/Loader.types";
 export { Card } from "./components/Card";
 export type { CardProps, CardVariant, CardMediaProps, CardHeaderProps, CardBodyProps, CardFooterProps } from "./components/Card/Card.types";
+export { InputEmail } from "./components/InputEmail";
+export type { InputEmailProps } from "./components/InputEmail/InputEmail.types";
