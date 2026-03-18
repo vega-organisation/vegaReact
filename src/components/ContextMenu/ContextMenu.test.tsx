@@ -4,8 +4,8 @@ import { ContextMenu } from './ContextMenu';
 
 describe('ContextMenu', () => {
   const items = [
-    { icon: '📋', label: 'Copy', onClick: vi.fn() },
-    { icon: '✂️', label: 'Cut', onClick: vi.fn() },
+    { icon: 'copy', label: 'Copy', onClick: vi.fn() },
+    { icon: 'scissors', label: 'Cut', onClick: vi.fn() },
   ];
 
   it('renders children', () => {
@@ -45,7 +45,7 @@ describe('ContextMenu', () => {
 
   it('calls item onClick when clicked', () => {
     const onCopy = vi.fn();
-    const menuItems = [{ icon: '📋', label: 'Copy', onClick: onCopy }];
+    const menuItems = [{ icon: 'copy', label: 'Copy', onClick: onCopy }];
     const { container } = render(<ContextMenu items={menuItems}>Content</ContextMenu>);
     fireEvent.contextMenu(screen.getByText('Content'));
     const item = container.querySelector('.context-menu-item')!;
