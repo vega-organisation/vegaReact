@@ -1,0 +1,124 @@
+.vega-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  width: auto;
+
+  &.vega-field-wrapper--full-width {
+    width: 100%;
+  }
+}
+
+.vega-field-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-main, #111827);
+  cursor: pointer;
+  margin-bottom: 0.25rem;
+}
+
+.vega-field-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--bg-surface, #ffffff);
+  border: 1px solid var(--border-default, #d1d5db);
+  border-radius: 0.375rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  width: 100%;
+
+  &:hover:not(.vega-field-container--disabled) {
+    border-color: var(--border-focus, #000000);
+  }
+
+  &:focus-within {
+    border-color: var(--border-focus, #000000);
+  }
+
+  &:has(input:focus-visible, select:focus-visible, textarea:focus-visible) {
+    outline: 2px solid var(--border-focus, #000000);
+    outline-offset: 2px;
+  }
+
+  &.vega-field-container--small {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  &.vega-field-container--medium {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  &.vega-field-container--large {
+    padding: 1rem 1.25rem;
+    font-size: 1.125rem;
+  }
+
+  &.vega-field-container--error {
+    border-color: var(--color-error, #ef4444);
+
+    &:hover:not(.vega-field-container--disabled) {
+      border-color: var(--color-error, #ef4444);
+    }
+
+    &:focus-within {
+      border-color: var(--color-error, #ef4444);
+      box-shadow: 0 0 0 1px var(--color-error, #ef4444);
+    }
+  }
+
+  &.vega-field-container--success {
+    border-color: var(--color-success, #22c55e);
+
+    &:hover:not(.vega-field-container--disabled) {
+      border-color: var(--color-success, #22c55e);
+    }
+
+    &:focus-within {
+      border-color: var(--color-success, #22c55e);
+      box-shadow: 0 0 0 1px var(--color-success, #22c55e);
+    }
+  }
+
+  &.vega-field-container--disabled {
+    background-color: var(--bg-disabled, #f3f4f6);
+    border-color: var(--neutral-200, #e5e7eb);
+    cursor: not-allowed;
+  }
+}
+
+.vega-field-icon-lead {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--text-secondary, #9ca3af);
+}
+
+.vega-field-icon-trail {
+  display: flex;
+  flex-shrink: 0;
+
+  &.vega-field-icon-trail--error {
+    color: var(--color-error, #ef4444);
+  }
+
+  &.vega-field-icon-trail--success {
+    color: var(--color-success, #22c55e);
+  }
+}
+
+.vega-field-helper {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  color: var(--text-secondary, #6b7280);
+
+  &.vega-field-helper--error {
+    color: var(--color-error, #ef4444);
+  }
+
+  &.vega-field-helper--success {
+    color: var(--color-success, #22c55e);
+  }
+}

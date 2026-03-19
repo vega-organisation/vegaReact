@@ -40,14 +40,14 @@ describe('InputEmail', () => {
     expect(screen.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
   });
 
-  it('applies size class', () => {
+  it('applies size class to container', () => {
     const { container } = render(<InputEmail size="small" />);
-    expect(container.querySelector('.vega-email-field')).toHaveClass('vega-email-field--small');
+    expect(container.querySelector('.vega-field-container')).toHaveClass('vega-field-container--small');
   });
 
   it('applies fullWidth class', () => {
     const { container } = render(<InputEmail fullWidth />);
-    expect(container.firstChild).toHaveClass('vega-email-wrapper--full-width');
+    expect(container.firstChild).toHaveClass('vega-field-wrapper--full-width');
   });
 
   it('can be disabled', () => {
