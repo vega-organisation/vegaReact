@@ -1,5 +1,6 @@
 import React, { useId, useState } from 'react';
 import type { InputEmailProps } from './InputEmail.types';
+import { InputWrapper } from '../InputWrapper';
 import './InputEmail.css';
 
 const EMAIL_REGEX =
@@ -79,64 +80,39 @@ export const InputEmail: React.FC<InputEmailProps> = ({
     onChange?.(e);
   };
 
-  const containerClasses = [
-    'vega-email-wrapper',
-    fullWidth ? 'vega-email-wrapper--full-width' : '',
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
-
-  const fieldClasses = [
-    'vega-email-field',
-    `vega-email-field--${size}`,
-    computedStatus !== 'default' ? `vega-email-field--${computedStatus}` : '',
-    disabled ? 'vega-email-field--disabled' : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
+  const trailIcon =
+    computedStatus !== 'default'
+      ? computedStatus === 'success'
+        ? <CheckIcon />
+        : <ErrorIcon />
+      : undefined;
 
   return (
-    <div className={containerClasses}>
-      {label && (
-        <label htmlFor={inputId} className="vega-email-label">
-          {label}
-        </label>
-      )}
-
-      <div className={fieldClasses}>
-        <span className="vega-email-icon-lead">
-          <MailIcon />
-        </span>
-
-        <input
-          id={inputId}
-          type="email"
-          className="vega-email-input"
-          disabled={disabled}
-          aria-invalid={computedStatus === 'error'}
-          aria-describedby={effectiveHelperText ? helperId : undefined}
-          {...(isControlled ? { value } : { defaultValue })}
-          onChange={handleChange}
-          {...props}
-        />
-
-        {computedStatus !== 'default' && (
-          <span
-            className={`vega-email-icon-trail vega-email-icon-trail--${computedStatus}`}
-            aria-hidden="true"
-          >
-            {computedStatus === 'success' ? <CheckIcon /> : <ErrorIcon />}
-          </span>
-        )}
-      </div>
-
-      {effectiveHelperText && (
-        <p id={helperId} className={`vega-email-helper vega-email-helper--${computedStatus}`}>
-          {effectiveHelperText}
-        </p>
-      )}
-    </div>
+    <InputWrapper
+      label={label}
+      helperText={effectiveHelperText}
+      status={computedStatus}
+      size={size}
+      fullWidth={fullWidth}
+      className={className}
+      disabled={disabled}
+      inputId={inputId}
+      helperId={effectiveHelperText ? helperId : undefined}
+      leadIcon={<MailIcon />}
+      trailIcon={trailIcon}
+    >
+      <input
+        id={inputId}
+        type="email"
+        className="vega-email-input"
+        disabled={disabled}
+        aria-invalid={computedStatus === 'error'}
+        aria-describedby={effectiveHelperText ? helperId : undefined}
+        {...(isControlled ? { value } : { defaultValue })}
+        onChange={handleChange}
+        {...props}
+      />
+    </InputWrapper>
   );
 };
 

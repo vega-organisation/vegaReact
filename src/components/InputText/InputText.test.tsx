@@ -19,24 +19,24 @@ describe('InputText', () => {
     expect(screen.getByText('Required field')).toBeInTheDocument();
   });
 
-  it('applies error status class', () => {
-    render(<InputText status="error" />);
-    expect(screen.getByRole('textbox')).toHaveClass('vega-input--error');
+  it('applies error status class to container', () => {
+    const { container } = render(<InputText status="error" />);
+    expect(container.querySelector('.vega-field-container')).toHaveClass('vega-field-container--error');
   });
 
-  it('applies success status class', () => {
-    render(<InputText status="success" />);
-    expect(screen.getByRole('textbox')).toHaveClass('vega-input--success');
+  it('applies success status class to container', () => {
+    const { container } = render(<InputText status="success" />);
+    expect(container.querySelector('.vega-field-container')).toHaveClass('vega-field-container--success');
   });
 
-  it('applies size class', () => {
-    render(<InputText size="large" />);
-    expect(screen.getByRole('textbox')).toHaveClass('vega-input--large');
+  it('applies size class to container', () => {
+    const { container } = render(<InputText size="large" />);
+    expect(container.querySelector('.vega-field-container')).toHaveClass('vega-field-container--large');
   });
 
   it('applies fullWidth class', () => {
     const { container } = render(<InputText fullWidth />);
-    expect(container.firstChild).toHaveClass('vega-input-wrapper--full-width');
+    expect(container.firstChild).toHaveClass('vega-field-wrapper--full-width');
   });
 
   it('can be disabled', () => {
