@@ -18,3 +18,7 @@ export { InputEmail } from "./components/InputEmail";
 export type { InputEmailProps } from "./components/InputEmail/InputEmail.types";
 export { Dialog } from "./components/Dialog";
 export type { DialogProps, DialogSize, DialogHeaderProps, DialogBodyProps, DialogFooterProps } from "./components/Dialog/Dialog.types";
+export { Navbar } from "./components/Navbar";
+export type { NavbarProps, NavbarItemProps, UserMenuProps } from "./components/Navbar/Navbar.types";
+export { Sidebar } from "./components/Sidebar";
+export type { SidebarProps, SidebarItemProps } from "./components/Sidebar/Sidebar.types";
