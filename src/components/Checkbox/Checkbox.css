@@ -1,36 +1,175 @@
+/* ── Base ── */
 .vega-checkbox {
-    display: flex;
-    align-items: center;
-    color: #000000;
+  --vega-checkbox-size: 1.25rem;
+  --vega-checkbox-radius: 0.25rem;
+  --vega-checkbox-gap: 0.5rem;
+  --vega-checkbox-border: var(--border-default, #d1d5db);
+  --vega-checkbox-bg: var(--bg-surface, #ffffff);
+  --vega-checkbox-checked-bg: var(--color-primary, #6d28d9);
+  --vega-checkbox-checked-border: var(--color-primary, #6d28d9);
+  --vega-checkbox-icon-color: var(--text-inverse, #ffffff);
+  --vega-checkbox-focus: var(--border-focus, #111827);
+  --vega-checkbox-transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--text-main, #111827);
 }
 
+.vega-checkbox--full-width {
+  display: flex;
+  width: 100%;
+}
+
+/* ── Sizes ── */
+.vega-checkbox--small {
+  --vega-checkbox-size: 1rem;
+  --vega-checkbox-gap: 0.375rem;
+  font-size: 0.875rem;
+}
+
+.vega-checkbox--medium {
+  --vega-checkbox-size: 1.25rem;
+  --vega-checkbox-gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.vega-checkbox--large {
+  --vega-checkbox-size: 1.5rem;
+  --vega-checkbox-gap: 0.625rem;
+  font-size: 1.125rem;
+}
+
+/* ── Control row (label + box) ── */
+.vega-checkbox__control {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--vega-checkbox-gap);
+  cursor: pointer;
+  user-select: none;
+}
+
+.vega-checkbox--disabled .vega-checkbox__control {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Hidden native input (sr-only) ── */
 .vega-checkbox__input {
-    display: flex;
-    align-items: end;
-    opacity: 1;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
+/* ── Custom box ── */
+.vega-checkbox__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--vega-checkbox-size);
+  height: var(--vega-checkbox-size);
+  border: 1.5px solid var(--vega-checkbox-border);
+  border-radius: var(--vega-checkbox-radius);
+  background-color: var(--vega-checkbox-bg);
+  color: var(--vega-checkbox-icon-color);
+  transition: var(--vega-checkbox-transition);
+  flex-shrink: 0;
+}
+
+/* ── Icons ── */
+.vega-checkbox__icon {
+  display: none;
+  width: 65%;
+  height: 65%;
+  stroke-width: 3;
+}
+
+/* ── Hover ── */
+.vega-checkbox__input:hover:not(:disabled) + .vega-checkbox__box {
+  border-color: var(--color-primary, #6d28d9);
+}
+
+/* ── Focus ── */
+.vega-checkbox__input:focus-visible + .vega-checkbox__box {
+  outline: 2px solid var(--vega-checkbox-focus);
+  outline-offset: 2px;
+}
+
+/* ── Checked ── */
+.vega-checkbox__input:checked + .vega-checkbox__box {
+  background-color: var(--vega-checkbox-checked-bg);
+  border-color: var(--vega-checkbox-checked-border);
+}
+
+.vega-checkbox__input:checked + .vega-checkbox__box .vega-checkbox__icon--check {
+  display: block;
+}
+
+/* ── Indeterminate ── */
+.vega-checkbox__input:indeterminate + .vega-checkbox__box {
+  background-color: var(--vega-checkbox-checked-bg);
+  border-color: var(--vega-checkbox-checked-border);
+}
+
+.vega-checkbox__input:indeterminate + .vega-checkbox__box .vega-checkbox__icon--indeterminate {
+  display: block;
+}
+
+.vega-checkbox__input:indeterminate + .vega-checkbox__box .vega-checkbox__icon--check {
+  display: none;
+}
+
+/* ── Disabled ── */
+.vega-checkbox__input:disabled + .vega-checkbox__box {
+  background-color: var(--bg-disabled, #f3f4f6);
+  border-color: var(--border-default, #d1d5db);
+}
+
+.vega-checkbox__input:disabled:checked + .vega-checkbox__box,
+.vega-checkbox__input:disabled:indeterminate + .vega-checkbox__box {
+  background-color: var(--color-primary, #6d28d9);
+  border-color: var(--color-primary, #6d28d9);
+  opacity: 0.5;
+}
+
+/* ── Error ── */
+.vega-checkbox--error .vega-checkbox__box {
+  border-color: var(--color-error, #ef4444);
+}
+
+.vega-checkbox--error .vega-checkbox__input:checked + .vega-checkbox__box,
+.vega-checkbox--error .vega-checkbox__input:indeterminate + .vega-checkbox__box {
+  background-color: var(--color-error, #ef4444);
+  border-color: var(--color-error, #ef4444);
+}
+
+/* ── Label ── */
 .vega-checkbox__label {
-    margin-left: 8px;
+  line-height: 1.4;
 }
 
-.vega-checkbox__label--small + .vega-checkbox__input {
-    font-size: 15px;
-    align-items: center;
+/* ── Description ── */
+.vega-checkbox__description {
+  margin: 0;
+  padding-left: calc(var(--vega-checkbox-size) + var(--vega-checkbox-gap));
+  font-size: 0.75rem;
+  color: var(--text-secondary, #9ca3af);
+  line-height: 1.4;
 }
 
-.vega-checkbox__label--medium {
-    font-size: 20px;
-}
-
-.vega-checkbox__label--large {
-    font-size: 25px;
-}
-
-.vega-checkbox__input:checked + .vega-checkbox__label {
-    color: #007bff;
-}
-
-.vega-checkbox__input:disabled + .vega-checkbox__label {
-    color: #6c757d;
+/* ── Error message ── */
+.vega-checkbox__error {
+  margin: 0;
+  padding-left: calc(var(--vega-checkbox-size) + var(--vega-checkbox-gap));
+  font-size: 0.75rem;
+  color: var(--color-error, #ef4444);
+  line-height: 1.4;
 }
