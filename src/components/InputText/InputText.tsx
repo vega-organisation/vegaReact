@@ -1,60 +1,44 @@
 import React, { useId } from 'react';
-import type { InputTextProps } from "./InputText.types";
-import "./InputText.css";
+import type { InputTextProps } from './InputText.types';
+import { InputWrapper } from '../InputWrapper';
+import './InputText.css';
 
 export const InputText: React.FC<InputTextProps> = ({
   label,
   helperText,
-  status = "default",
-  size = "medium",
+  status = 'default',
+  size = 'medium',
   fullWidth = false,
-  className = "",
+  className = '',
   id,
   disabled = false,
   ...props
 }) => {
-
   const generatedId = useId();
   const inputId = id || generatedId;
-
-  const containerClasses = [
-    "vega-input-wrapper",
-    fullWidth ? "vega-input-wrapper--full-width" : "",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  const inputClasses = [
-    "vega-input",
-    `vega-input--${size}`,
-    status !== "default" ? `vega-input--${status}` : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const helperId = `${inputId}-helper`;
 
   return (
-    <div className={containerClasses}>
-      {label && (
-        <label htmlFor={inputId} className="vega-input-label">
-          {label}
-        </label>
-      )}
-
+    <InputWrapper
+      label={label}
+      helperText={helperText}
+      status={status}
+      size={size}
+      fullWidth={fullWidth}
+      className={className}
+      disabled={disabled}
+      inputId={inputId}
+      helperId={helperText ? helperId : undefined}
+    >
       <input
         id={inputId}
-        className={inputClasses}
+        className="vega-input"
         disabled={disabled}
+        aria-describedby={helperText ? helperId : undefined}
         {...props}
       />
-
-      {helperText && (
-        <p className={`vega-input-helper vega-input-helper--${status}`}>
-          {helperText}
-        </p>
-      )}
-    </div>
+    </InputWrapper>
   );
 };
 
-InputText.displayName = "InputText";
+InputText.displayName = 'InputText';

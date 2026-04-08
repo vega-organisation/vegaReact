@@ -6,7 +6,7 @@ export interface InputTextProps extends Omit<InputHTMLAttributes<HTMLInputElemen
 
   helperText?: ReactNode;
 
-  status?: 'normal' | 'error' | 'success';
+  status?: 'default' | 'error' | 'success';
 
   variant?: 'outlined' | 'filled';
 
