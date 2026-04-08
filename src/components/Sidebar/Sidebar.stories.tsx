@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Sidebar } from "./Sidebar";
 import { LayoutDashboard, Users, FolderOpen, Calendar, Settings, HelpCircle, LogOut } from "lucide-react";
 
+import { SidebarProps } from "./Sidebar.types";
+
 const meta: Meta<typeof Sidebar> = {
   title: "Components/Sidebar",
   component: Sidebar,
@@ -15,7 +17,7 @@ const meta: Meta<typeof Sidebar> = {
 export default meta;
 type Story = StoryObj<typeof Sidebar>;
 
-const SidebarWithHooks = (args: any) => {
+const SidebarWithHooks = (args: SidebarProps) => {
   const [isOpenMobile, setIsOpenMobile] = useState(false);
   return (
     <div style={{ display: 'flex', height: '100vh', backgroundColor: '#f9fafb' }}>
