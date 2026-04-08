@@ -1,0 +1,241 @@
+.vega-sidebar {
+  --vega-sidebar-width-expanded: 260px;
+  --vega-sidebar-width-collapsed: 64px;
+  --vega-sidebar-bg: var(--bg-surface, #ffffff);
+  --vega-sidebar-border-color: var(--border-default, #d1d5db);
+  --vega-sidebar-text-color: var(--text-main, #111827);
+  --vega-sidebar-text-secondary: var(--text-secondary, #9ca3af);
+  --vega-sidebar-item-hover-bg: var(--neutral-100, #f3f4f6);
+  --vega-sidebar-item-active-bg: var(--color-primary, #6d28d9);
+  --vega-sidebar-item-active-color: var(--text-inverse, #ffffff);
+  --vega-sidebar-transition-duration: 0.25s;
+  --vega-sidebar-item-radius: 0.5rem;
+  --vega-sidebar-padding: 1rem;
+  --vega-sidebar-item-padding-v: 0.625rem;
+  --vega-sidebar-item-padding-h: 0.75rem;
+  --vega-sidebar-icon-size: 1.25rem;
+  --vega-sidebar-gap: 0.25rem;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: var(--vega-sidebar-width-expanded);
+  background-color: var(--vega-sidebar-bg);
+  border-right: 1px solid var(--vega-sidebar-border-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: width var(--vega-sidebar-transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+}
+
+.vega-sidebar--collapsed {
+  width: var(--vega-sidebar-width-collapsed);
+}
+
+/* ── Header ── */
+
+.vega-sidebar__header {
+  flex-shrink: 0;
+  padding: var(--vega-sidebar-padding);
+  border-bottom: 1px solid var(--vega-sidebar-border-color);
+  display: flex;
+  align-items: center;
+  min-height: 4rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* ── Body ── */
+
+.vega-sidebar__body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--vega-sidebar-padding) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--vega-sidebar-gap);
+}
+
+/* ── Footer ── */
+
+.vega-sidebar__footer {
+  flex-shrink: 0;
+  padding: var(--vega-sidebar-padding);
+  border-top: 1px solid var(--vega-sidebar-border-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--vega-sidebar-gap);
+}
+
+/* ── Item wrapper ── */
+
+.vega-sidebar__item-wrapper {
+  padding: 0 calc(var(--vega-sidebar-padding) / 2);
+}
+
+/* ── Item ── */
+
+.vega-sidebar__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: var(--vega-sidebar-item-padding-v) var(--vega-sidebar-item-padding-h);
+  border-radius: var(--vega-sidebar-item-radius);
+  color: var(--vega-sidebar-text-color);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  font-size: var(--font-size-sm, 0.875rem);
+  font-family: inherit;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  transition:
+    background-color var(--vega-sidebar-transition-duration) ease,
+    color var(--vega-sidebar-transition-duration) ease,
+    padding var(--vega-sidebar-transition-duration) ease,
+    justify-content var(--vega-sidebar-transition-duration) ease;
+  box-sizing: border-box;
+}
+
+.vega-sidebar__item:hover {
+  background-color: var(--vega-sidebar-item-hover-bg);
+}
+
+.vega-sidebar__item:focus-visible {
+  outline: 2px solid var(--color-primary, #6d28d9);
+  outline-offset: 2px;
+}
+
+.vega-sidebar__item--active {
+  background-color: var(--vega-sidebar-item-active-bg);
+  color: var(--vega-sidebar-item-active-color);
+}
+
+.vega-sidebar__item--active:hover {
+  background-color: var(--vega-sidebar-item-active-bg);
+  opacity: 0.9;
+}
+
+/* Collapsed: centre l'icône */
+.vega-sidebar--collapsed .vega-sidebar__item {
+  justify-content: center;
+  gap: 0;
+  padding: var(--vega-sidebar-item-padding-v);
+}
+
+/* ── Item icon ── */
+
+.vega-sidebar__item-icon {
+  flex-shrink: 0;
+  width: var(--vega-sidebar-icon-size);
+  height: var(--vega-sidebar-icon-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Item label ── */
+
+.vega-sidebar__item-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  opacity: 1;
+  transition:
+    max-width var(--vega-sidebar-transition-duration) ease,
+    opacity calc(var(--vega-sidebar-transition-duration) * 0.8) ease;
+}
+
+.vega-sidebar--collapsed .vega-sidebar__item-label {
+  max-width: 0;
+  opacity: 0;
+}
+
+/* ── Item chevron ── */
+
+.vega-sidebar__item-chevron {
+  flex-shrink: 0;
+  color: var(--vega-sidebar-text-secondary);
+  transition:
+    transform var(--vega-sidebar-transition-duration) ease,
+    opacity var(--vega-sidebar-transition-duration) ease,
+    max-width var(--vega-sidebar-transition-duration) ease;
+  max-width: 16px;
+  opacity: 1;
+}
+
+.vega-sidebar__item-chevron--open {
+  transform: rotate(90deg);
+}
+
+.vega-sidebar--collapsed .vega-sidebar__item-chevron {
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* ── SubMenu ── */
+
+.vega-sidebar__submenu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vega-sidebar-gap);
+  margin: 0.25rem calc(var(--vega-sidebar-padding) / 2) 0.25rem calc(var(--vega-sidebar-padding) + 0.5rem);
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--vega-sidebar-border-color);
+}
+
+.vega-sidebar__submenu .vega-sidebar__item {
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: 400;
+}
+
+.vega-sidebar--collapsed .vega-sidebar__submenu {
+  display: none;
+}
+
+/* ── Toggle ── */
+
+.vega-sidebar__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.625rem;
+  background: transparent;
+  border: 1px solid var(--vega-sidebar-border-color);
+  border-radius: var(--vega-sidebar-item-radius);
+  cursor: pointer;
+  color: var(--vega-sidebar-text-color);
+  transition: background-color var(--vega-sidebar-transition-duration) ease;
+}
+
+.vega-sidebar__toggle:hover {
+  background-color: var(--vega-sidebar-item-hover-bg);
+}
+
+.vega-sidebar__toggle:focus-visible {
+  outline: 2px solid var(--color-primary, #6d28d9);
+  outline-offset: 2px;
+}
+
+.vega-sidebar__toggle-icon {
+  transition: transform var(--vega-sidebar-transition-duration) ease;
+}
+
+.vega-sidebar--expanded .vega-sidebar__toggle-icon {
+  transform: rotate(0deg);
+}
+
+.vega-sidebar--collapsed .vega-sidebar__toggle-icon {
+  transform: rotate(180deg);
+}
