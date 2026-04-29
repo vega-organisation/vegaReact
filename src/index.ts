@@ -47,3 +47,5 @@ export type {
   TooltipPlacement,
   TooltipTrigger,
 } from "./components/Tooltip/Tooltip.types";
+export { FormWrapper, useFormContext } from "./components/FormWrapper";
+export type { FormWrapperProps, FormContextValue, FormWrapperGap } from "./components/FormWrapper/FormWrapper.types";
