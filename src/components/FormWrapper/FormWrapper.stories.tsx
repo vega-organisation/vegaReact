@@ -92,10 +92,10 @@ export const Disabled: Story = {
 
 export const GapVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
+    <div style={{ display: 'flex', gap: '3rem', alignItems: 'flex-start' }}>
       {(['sm', 'md', 'lg'] as const).map((gap) => (
         <div key={gap} style={{ width: 220 }}>
-          <p style={{ margin: '0 0 0.5rem', fontWeight: 600, fontSize: '0.875rem' }}>gap={gap}</p>
+          <p style={{ margin: '0 0 0.5rem', fontWeight: 600, fontSize: '0.875rem' }}>Gap = {gap}</p>
           <FormWrapper onSubmit={() => {}} gap={gap}>
             <InputText label="Nom" placeholder="Jean" fullWidth />
             <InputText label="Prénom" placeholder="Dupont" fullWidth />

@@ -4,15 +4,15 @@
   flex-direction: column;
   gap: 1.25rem;
 
-  &--gap-sm {
+  &.vega-form--gap-sm {
     gap: 0.75rem;
   }
 
-  &--gap-md {
+  &.vega-form--gap-md {
     gap: 1.25rem;
   }
 
-  &--gap-lg {
+  &.vega-form--gap-lg {
     gap: 2rem;
   }
 }
