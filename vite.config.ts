@@ -9,6 +9,7 @@ export default defineConfig({
     react(),
     dts({
       insertTypesEntry: true,
+      tsconfigPath: resolve(__dirname, "tsconfig.app.json"),
       include: ["src/components/**/*", "src/index.ts"],
     }),
   ],

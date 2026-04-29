@@ -18,3 +18,5 @@ export { InputEmail } from "./components/InputEmail";
 export type { InputEmailProps } from "./components/InputEmail/InputEmail.types";
 export { Dialog } from "./components/Dialog";
 export type { DialogProps, DialogSize, DialogHeaderProps, DialogBodyProps, DialogFooterProps } from "./components/Dialog/Dialog.types";
+export { Tooltip } from "./components/Tooltip";
+export type { TooltipProps, TooltipPlacement, TooltipTrigger } from "./components/Tooltip/Tooltip.types";

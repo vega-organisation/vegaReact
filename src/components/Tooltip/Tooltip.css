@@ -1,0 +1,50 @@
+.vega-tooltip {
+  position: fixed;
+  z-index: 9999;
+  max-width: min(320px, calc(100vw - 16px));
+  background: var(--text-main, #111827);
+  color: var(--text-inverse, #ffffff);
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.5rem;
+  font-size: var(--text-sm, 14px);
+  line-height: 1.25rem;
+  box-sizing: border-box;
+  pointer-events: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transform: translate3d(0, 0, 0) scale(0.98);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.vega-tooltip--open {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.vega-tooltip__arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--text-main, #111827);
+  transform: rotate(45deg);
+}
+
+.vega-tooltip__arrow--top {
+  bottom: -5px;
+}
+.vega-tooltip__arrow--bottom {
+  top: -5px;
+}
+.vega-tooltip__arrow--left {
+  right: -5px;
+}
+.vega-tooltip__arrow--right {
+  left: -5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vega-tooltip {
+    transition: none;
+  }
+}
+
