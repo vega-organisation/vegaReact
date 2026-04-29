@@ -1,0 +1,200 @@
+.vega-sidebar {
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 72px;
+  --sidebar-bg: var(--bg-surface, #ffffff);
+  --sidebar-border: var(--border-default, #e5e7eb);
+  --sidebar-text: var(--text-main, #111827);
+  --sidebar-active: var(--color-primary, #6d28d9);
+  --sidebar-hover: var(--bg-disabled, #f3f4f6);
+
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  box-sizing: border-box;
+}
+
+.vega-sidebar * {
+  box-sizing: border-box;
+}
+
+.vega-sidebar--collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+.vega-sidebar-header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--sidebar-border);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.vega-sidebar--collapsed .vega-sidebar-header {
+  padding: 0;
+  justify-content: center;
+}
+
+.vega-sidebar-logo-placeholder {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--sidebar-active);
+}
+
+.vega-sidebar-toggle {
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--sidebar-bg);
+  border: 1px solid var(--sidebar-border);
+  cursor: pointer;
+  color: var(--text-secondary, #6b7280);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.vega-sidebar-close-mobile {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--sidebar-text);
+}
+
+.vega-sidebar-content {
+  flex: 1;
+  padding: 16px 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vega-sidebar-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  text-decoration: none;
+  color: var(--sidebar-text);
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 12px;
+  transition: all 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.vega-sidebar-item:hover {
+  background-color: var(--sidebar-hover);
+}
+
+.vega-sidebar-item--active {
+  background-color: var(--sidebar-active);
+  color: #ffffff;
+}
+
+.vega-sidebar--collapsed .vega-sidebar-item {
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.vega-sidebar--collapsed .vega-sidebar-item-label,
+.vega-sidebar--collapsed .vega-sidebar-item-chevron {
+  display: none;
+}
+
+.vega-sidebar-footer {
+  padding: 16px 8px;
+  border-top: 1px solid var(--sidebar-border);
+  flex-shrink: 0;
+}
+
+.vega-sidebar--collapsed .vega-sidebar-footer span {
+  display: none;
+}
+
+.vega-sidebar-mobile-trigger {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  width: 44px;
+  height: 44px;
+  background-color: var(--sidebar-bg);
+  border: 1px solid var(--sidebar-border);
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  color: var(--sidebar-text);
+  cursor: pointer;
+  z-index: 2500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* MOBILE DRAWER STRATEGY */
+@media (max-width: 768px) {
+  .vega-sidebar-mobile-trigger {
+    display: flex;
+  }
+  .vega-sidebar {
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: -100%; /* Hidden off-screen */
+    width: 280px;
+    z-index: 3000;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-right: 1px solid var(--sidebar-border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.1);
+  }
+
+  .vega-sidebar--open-mobile {
+    left: 0; /* Slide in on burger click */
+  }
+
+  .vega-sidebar-toggle {
+    display: none;
+  }
+
+  .vega-sidebar-close-mobile {
+    display: flex;
+  }
+}
+
+/* Scrollbar styling */
+.vega-sidebar-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.vega-sidebar-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.vega-sidebar-content::-webkit-scrollbar-thumb {
+  background: var(--sidebar-border);
+  border-radius: 10px;
+}
