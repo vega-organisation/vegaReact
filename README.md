@@ -6,7 +6,7 @@ This a library components made for my own usage, I will keep it public for every
 ## Installation
 
 ```bash
-npm install 
+npm install
 ```
 
 ---
@@ -16,3 +16,9 @@ npm install
 ```bash
 npm run storybook
 ```
+
+---
+
+## Components
+
+See [COMPONENTS.md](./COMPONENTS.md) for the full list of components.
