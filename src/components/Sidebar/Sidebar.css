@@ -192,6 +192,12 @@
   }
 }
 
+.vega-sidebar-item-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
 .vega-sidebar-item-chevron {
   margin-left: auto;
   transition: transform 0.2s;
