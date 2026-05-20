@@ -1,7 +1,7 @@
 'use client';
 
 import { Component, Suspense, useEffect, useRef } from 'react';
-import type { CSSProperties, ErrorInfo, ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import {
   Bounds,
@@ -109,7 +109,7 @@ class ModelErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryStat
     return { error };
   }
 
-  componentDidCatch(error: Error, _info: ErrorInfo): void {
+  componentDidCatch(error: Error): void {
     this.props.onError?.(error);
   }
 
