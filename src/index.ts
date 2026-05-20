@@ -54,3 +54,14 @@ export type {
   ModelViewerProps,
   ModelViewerEnvironment,
 } from "./components/ModelViewer/ModelViewer.types";
+export { Sidebar, useSidebarContext } from "./components/Sidebar";
+export type {
+  SidebarProps,
+  SidebarHeaderProps,
+  SidebarBodyProps,
+  SidebarFooterProps,
+  SidebarItemProps,
+  SidebarSubMenuProps,
+  SidebarToggleProps,
+  SidebarContextValue,
+} from "./components/Sidebar";
