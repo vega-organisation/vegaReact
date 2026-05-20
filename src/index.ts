@@ -49,13 +49,8 @@ export type {
 } from "./components/Tooltip/Tooltip.types";
 export { FormWrapper, useFormContext } from "./components/FormWrapper";
 export type { FormWrapperProps, FormContextValue, FormWrapperGap } from "./components/FormWrapper/FormWrapper.types";
-export { Sidebar, useSidebarContext } from "./components/Sidebar";
+export { ModelViewer } from "./components/ModelViewer";
 export type {
-  SidebarProps,
-  SidebarHeaderProps,
-  SidebarBodyProps,
-  SidebarFooterProps,
-  SidebarItemProps,
-  SidebarSubMenuProps,
-  SidebarToggleProps,
-} from "./components/Sidebar";
+  ModelViewerProps,
+  ModelViewerEnvironment,
+} from "./components/ModelViewer/ModelViewer.types";
