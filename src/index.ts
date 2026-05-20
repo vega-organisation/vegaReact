@@ -65,3 +65,5 @@ export type {
   SidebarToggleProps,
   SidebarContextValue,
 } from "./components/Sidebar";
+export { CodeBlock } from "./components/CodeBlock";
+export type { CodeBlockProps } from "./components/CodeBlock/CodeBlock.types";
