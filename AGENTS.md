@@ -10,7 +10,10 @@ Guide for AI agents contributing to this project. Read this before making any ch
 
 - **Stack**: React 19, TypeScript 5.9, Vite 7, Storybook 10
 - **Package entry**: `src/index.ts` → `dist/`
+- **Published CSS**: `import "vega-react-components/style.css"` (maps to `dist/style.css`)
 - **Docs**: `npm run storybook` (port 6006)
+
+`src/index.ts` must start with `"use client"` (Next.js / RSC). Peer deps: `react`, `react-dom`, `lucide-react`; optional `react-phone-number-input`.
 
 ---
 
