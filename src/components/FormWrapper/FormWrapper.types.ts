@@ -1,4 +1,4 @@
-import { FormHTMLAttributes, ReactNode } from 'react';
+import type { FormHTMLAttributes, ReactNode } from 'react';
 
 export type FormWrapperGap = 'sm' | 'md' | 'lg';
 

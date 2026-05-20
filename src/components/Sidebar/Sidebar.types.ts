@@ -1,28 +1,4 @@
-import { HTMLAttributes, ReactNode } from 'react';
-
-export interface SidebarProps {
-  children?: ReactNode;
-  /** Uncontrolled: initial expanded state (default: true) */
-  defaultExpanded?: boolean;
-  /** Controlled expanded state */
-  expanded?: boolean;
-  /** Called when expanded state changes */
-  onExpandedChange?: (isExpanded: boolean) => void;
-  /** Mobile: sidebar is visible as an overlay */
-  isOpenMobile?: boolean;
-  /** Mobile: callback to close the sidebar */
-  onCloseMobile?: () => void;
-  /** Mobile: show a floating hamburger button */
-  showMobileTrigger?: boolean;
-  /** Mobile: callback to open the sidebar */
-  onOpenMobile?: () => void;
-  className?: string;
-}
-
-export interface SidebarHeaderProps extends HTMLAttributes<HTMLDivElement> {}
-export interface SidebarBodyProps extends HTMLAttributes<HTMLDivElement> {}
-export interface SidebarFooterProps extends HTMLAttributes<HTMLDivElement> {}
-export interface SidebarSubMenuProps extends HTMLAttributes<HTMLDivElement> {}
+import type { ReactNode } from "react";
 
 export interface SidebarItemProps {
   label: string;
