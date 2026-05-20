@@ -1,18 +1,21 @@
 {
   "name": "vega-react-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A modern React component library",
   "type": "module",
-  "main": "./dist/vegareact.cjs",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/vegareact.cjs.js",
   "module": "./dist/vegareact.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/vegareact.es.js",
-      "require": "./dist/vegareact.cjs"
+      "require": "./dist/vegareact.cjs.js"
     },
-    "./dist/style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css"
   },
   "files": [
     "dist"
@@ -30,7 +33,14 @@
   },
   "peerDependencies": {
     "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "react-dom": ">=18.0.0",
+    "lucide-react": ">=0.400.0",
+    "react-phone-number-input": ">=3.4.0"
+  },
+  "peerDependenciesMeta": {
+    "react-phone-number-input": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
@@ -50,8 +60,10 @@
     "globals": "^16.4.0",
     "happy-dom": "^20.8.4",
     "knip": "^5.73.0",
+    "lucide-react": "^0.562.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-phone-number-input": "^3.4.16",
     "storybook": "^10.2.12",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.45.0",
@@ -74,9 +86,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/vega-organisation/vegaReact.git"
-  },
-  "dependencies": {
-    "lucide-react": "^0.562.0",
-    "react-phone-number-input": "^3.4.16"
   }
 }

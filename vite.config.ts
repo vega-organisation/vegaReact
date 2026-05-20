@@ -20,9 +20,17 @@ export default defineConfig({
       formats: ["es", "cjs"],
       fileName: (format) => `vegareact.${format === "es" ? "es" : "cjs"}.js`,
     },
+    cssCodeSplit: false,
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime"],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "lucide-react",
+        "react-phone-number-input",
+      ],
       output: {
+        assetFileNames: "style.css",
         globals: {
           react: "React",
           "react-dom": "ReactDOM",

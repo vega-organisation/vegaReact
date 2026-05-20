@@ -1,43 +1,46 @@
-import { HTMLAttributes, ReactNode } from 'react';
-
-export interface SidebarProps extends HTMLAttributes<HTMLElement> {
-  defaultExpanded?: boolean;
-  expanded?: boolean;
-  onExpandedChange?: (expanded: boolean) => void;
-  children: ReactNode;
-  className?: string;
-}
-
-export interface SidebarHeaderProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
-  className?: string;
-}
-
-export interface SidebarBodyProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
-  className?: string;
-}
-
-export interface SidebarFooterProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
-  className?: string;
-}
+import { ReactNode } from "react";
 
 export interface SidebarItemProps {
-  icon?: ReactNode;
   label: string;
+  icon?: ReactNode;
   href?: string;
-  active?: boolean;
-  children?: ReactNode;
-  className?: string;
+  isActive?: boolean;
   onClick?: () => void;
+  className?: string;
+  /**
+   * Optional nested items for accordion support.
+   */
+  children?: SidebarItemProps[];
 }
 
-export interface SidebarSubMenuProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
+export interface SidebarProps {
+  logo?: ReactNode;
+  items?: SidebarItemProps[];
+  isCollapsible?: boolean;
+  defaultCollapsed?: boolean;
+  /**
+   * For mobile: if true, the sidebar is visible as an overlay.
+   */
+  isOpenMobile?: boolean;
+  /**
+   * For mobile: callback to close the sidebar.
+   */
+  onCloseMobile?: () => void;
+  /**
+   * For mobile: if true, show a floating hamburger button to open the sidebar.
+   */
+  showMobileTrigger?: boolean;
+  /**
+   * For mobile: callback to open the sidebar (needed if showMobileTrigger is true).
+   */
+  onOpenMobile?: () => void;
   className?: string;
-}
-
-export interface SidebarToggleProps {
-  className?: string;
+  /**
+   * Optional footer content.
+   */
+  footer?: ReactNode;
+  /**
+   * Callback when collapsed state changes.
+   */
+  onToggle?: (isCollapsed: boolean) => void;
 }
