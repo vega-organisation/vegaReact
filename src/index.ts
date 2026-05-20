@@ -49,3 +49,8 @@ export type {
 } from "./components/Tooltip/Tooltip.types";
 export { FormWrapper, useFormContext } from "./components/FormWrapper";
 export type { FormWrapperProps, FormContextValue, FormWrapperGap } from "./components/FormWrapper/FormWrapper.types";
+export { ModelViewer } from "./components/ModelViewer";
+export type {
+  ModelViewerProps,
+  ModelViewerEnvironment,
+} from "./components/ModelViewer/ModelViewer.types";
