@@ -1,81 +1,108 @@
-import React, { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import { Sidebar } from "./Sidebar";
-import { LayoutDashboard, Users, FolderOpen, Calendar, Settings, HelpCircle, LogOut } from "lucide-react";
-
-import { SidebarProps } from "./Sidebar.types";
+import React, { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Sidebar } from './Sidebar';
+import {
+  LayoutDashboard,
+  Users,
+  FolderOpen,
+  Calendar,
+  Settings,
+  HelpCircle,
+  LogOut,
+} from 'lucide-react';
 
 const meta: Meta<typeof Sidebar> = {
-  title: "Components/Sidebar",
+  title: 'Components/Sidebar',
   component: Sidebar,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
 type Story = StoryObj<typeof Sidebar>;
 
-const SidebarWithHooks = (args: SidebarProps) => {
-  const [isOpenMobile, setIsOpenMobile] = useState(false);
-  return (
-    <div style={{ display: 'flex', height: '100vh', backgroundColor: '#f9fafb' }}>
-      <Sidebar 
-        {...args} 
-        isOpenMobile={isOpenMobile} 
-        onOpenMobile={() => setIsOpenMobile(true)}
-        onCloseMobile={() => setIsOpenMobile(false)} 
-      />
-      <main style={{ flex: 1, padding: '40px' }}>
-        <h1 style={{ fontSize: '24px', fontWeight: 'bold' }}>Main Content Area</h1>
-        <p style={{ marginTop: '16px', color: '#6b7280' }}>
-          On mobile, click the burger button to open the sidebar.
-        </p>
-      </main>
-    </div>
-  );
-};
+const Layout = ({ children }: { children: React.ReactNode }) => (
+  <div style={{ display: 'flex', height: '100vh', backgroundColor: '#f9fafb' }}>
+    {children}
+    <main style={{ flex: 1, padding: '40px' }}>
+      <h1 style={{ fontSize: '24px', fontWeight: 'bold' }}>Main Content Area</h1>
+      <p style={{ marginTop: '16px', color: '#6b7280' }}>
+        Use the toggle button to collapse / expand the sidebar.
+      </p>
+    </main>
+  </div>
+);
 
 export const Default: Story = {
-  args: {
-    logo: <div style={{ fontWeight: 'bold', fontSize: '1.5rem', color: '#6d28d9' }}>V</div>,
-    showMobileTrigger: true,
-    items: [
-      { label: "Dashboard", icon: <LayoutDashboard size={20} />, href: "#", isActive: true },
-      { 
-        label: "Team", 
-        icon: <Users size={20} />, 
-        children: [
-          { label: "Overview", href: "#overview" },
-          { label: "Members", href: "#members" },
-          { label: "Invitations", href: "#invites" },
-        ]
-      },
-      { label: "Projects", icon: <FolderOpen size={20} />, href: "#projects" },
-      { label: "Calendar", icon: <Calendar size={20} />, href: "#calendar" },
-      { label: "Settings", icon: <Settings size={20} />, href: "#settings" },
-    ],
-    footer: (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-        <button className="vega-sidebar-item">
-          <HelpCircle size={20} />
-          <span>Support</span>
-        </button>
-        <button className="vega-sidebar-item" style={{ color: '#ef4444' }}>
-          <LogOut size={20} />
-          <span>Logout</span>
-        </button>
-      </div>
-    )
-  },
-  render: (args) => <SidebarWithHooks {...args} />
+  render: () => (
+    <Layout>
+      <Sidebar>
+        <Sidebar.Header>
+          <div style={{ fontWeight: 'bold', fontSize: '1.5rem', color: '#6d28d9' }}>V</div>
+          <Sidebar.Toggle />
+        </Sidebar.Header>
+        <Sidebar.Body>
+          <Sidebar.Item icon={<LayoutDashboard size={20} />} label="Dashboard" href="#" active />
+          <Sidebar.Item icon={<Users size={20} />} label="Team">
+            <Sidebar.SubMenu>
+              <Sidebar.Item label="Overview" href="#overview" />
+              <Sidebar.Item label="Members" href="#members" />
+              <Sidebar.Item label="Invitations" href="#invites" />
+            </Sidebar.SubMenu>
+          </Sidebar.Item>
+          <Sidebar.Item icon={<FolderOpen size={20} />} label="Projects" href="#projects" />
+          <Sidebar.Item icon={<Calendar size={20} />} label="Calendar" href="#calendar" />
+          <Sidebar.Item icon={<Settings size={20} />} label="Settings" href="#settings" />
+        </Sidebar.Body>
+        <Sidebar.Footer>
+          <Sidebar.Item icon={<HelpCircle size={20} />} label="Support" href="#support" />
+          <Sidebar.Item icon={<LogOut size={20} />} label="Logout" onClick={() => alert('Logout')} />
+        </Sidebar.Footer>
+      </Sidebar>
+    </Layout>
+  ),
 };
 
-export const Collapsed: Story = {
-  args: {
-    ...Default.args,
-    defaultCollapsed: true,
+export const DefaultCollapsed: Story = {
+  render: () => (
+    <Layout>
+      <Sidebar defaultExpanded={false}>
+        <Sidebar.Header>
+          <div style={{ fontWeight: 'bold', fontSize: '1.5rem', color: '#6d28d9' }}>V</div>
+          <Sidebar.Toggle />
+        </Sidebar.Header>
+        <Sidebar.Body>
+          <Sidebar.Item icon={<LayoutDashboard size={20} />} label="Dashboard" href="#" active />
+          <Sidebar.Item icon={<Users size={20} />} label="Team" href="#team" />
+          <Sidebar.Item icon={<FolderOpen size={20} />} label="Projects" href="#projects" />
+          <Sidebar.Item icon={<Settings size={20} />} label="Settings" href="#settings" />
+        </Sidebar.Body>
+        <Sidebar.Footer>
+          <Sidebar.Item icon={<LogOut size={20} />} label="Logout" />
+        </Sidebar.Footer>
+      </Sidebar>
+    </Layout>
+  ),
+};
+
+export const Controlled: Story = {
+  render: () => {
+    const [expanded, setExpanded] = useState(true);
+    return (
+      <Layout>
+        <Sidebar expanded={expanded} onExpandedChange={setExpanded}>
+          <Sidebar.Header>
+            <div style={{ fontWeight: 'bold', fontSize: '1.5rem', color: '#6d28d9' }}>V</div>
+            <Sidebar.Toggle />
+          </Sidebar.Header>
+          <Sidebar.Body>
+            <Sidebar.Item icon={<LayoutDashboard size={20} />} label="Dashboard" href="#" active />
+            <Sidebar.Item icon={<Settings size={20} />} label="Settings" href="#settings" />
+          </Sidebar.Body>
+        </Sidebar>
+      </Layout>
+    );
   },
-  render: (args) => <SidebarWithHooks {...args} />
 };
