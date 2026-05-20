@@ -25,6 +25,7 @@ npm install vega-react-components
 ## Layout
 
 - **Card** — Container with variants and composition for grouping content.
+- **CodeBlock** — Component to display code with language support, line numbers, and copy functionality.
 
 ## Overlay
 
