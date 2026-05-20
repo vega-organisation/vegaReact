@@ -19,10 +19,10 @@ export interface SidebarProps {
   className?: string;
 }
 
-export interface SidebarHeaderProps extends HTMLAttributes<HTMLDivElement> {}
-export interface SidebarBodyProps extends HTMLAttributes<HTMLDivElement> {}
-export interface SidebarFooterProps extends HTMLAttributes<HTMLDivElement> {}
-export interface SidebarSubMenuProps extends HTMLAttributes<HTMLDivElement> {}
+export type SidebarHeaderProps = HTMLAttributes<HTMLDivElement>;
+export type SidebarBodyProps = HTMLAttributes<HTMLDivElement>;
+export type SidebarFooterProps = HTMLAttributes<HTMLDivElement>;
+export type SidebarSubMenuProps = HTMLAttributes<HTMLDivElement>;
 
 export interface SidebarItemProps {
   label: string;

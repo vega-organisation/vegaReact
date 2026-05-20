@@ -87,22 +87,24 @@ export const DefaultCollapsed: Story = {
   ),
 };
 
+const ControlledSidebar = () => {
+  const [expanded, setExpanded] = useState(true);
+  return (
+    <Layout>
+      <Sidebar expanded={expanded} onExpandedChange={setExpanded}>
+        <Sidebar.Header>
+          <div style={{ fontWeight: 'bold', fontSize: '1.5rem', color: '#6d28d9' }}>V</div>
+          <Sidebar.Toggle />
+        </Sidebar.Header>
+        <Sidebar.Body>
+          <Sidebar.Item icon={<LayoutDashboard size={20} />} label="Dashboard" href="#" active />
+          <Sidebar.Item icon={<Settings size={20} />} label="Settings" href="#settings" />
+        </Sidebar.Body>
+      </Sidebar>
+    </Layout>
+  );
+};
+
 export const Controlled: Story = {
-  render: () => {
-    const [expanded, setExpanded] = useState(true);
-    return (
-      <Layout>
-        <Sidebar expanded={expanded} onExpandedChange={setExpanded}>
-          <Sidebar.Header>
-            <div style={{ fontWeight: 'bold', fontSize: '1.5rem', color: '#6d28d9' }}>V</div>
-            <Sidebar.Toggle />
-          </Sidebar.Header>
-          <Sidebar.Body>
-            <Sidebar.Item icon={<LayoutDashboard size={20} />} label="Dashboard" href="#" active />
-            <Sidebar.Item icon={<Settings size={20} />} label="Settings" href="#settings" />
-          </Sidebar.Body>
-        </Sidebar>
-      </Layout>
-    );
-  },
+  render: () => <ControlledSidebar />,
 };
