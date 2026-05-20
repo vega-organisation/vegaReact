@@ -1,6 +1,6 @@
 {
   "name": "vega-react-components",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A modern React component library",
   "type": "module",
   "sideEffects": [
