@@ -1,5 +1,5 @@
-import { InputHTMLAttributes, ReactNode } from 'react';
-import { Country } from 'react-phone-number-input';
+import type { InputHTMLAttributes, ReactNode } from 'react';
+import type { Country } from 'react-phone-number-input';
 
 /**
  * Props for the PhoneNumberInput component.
