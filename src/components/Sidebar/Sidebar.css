@@ -46,9 +46,7 @@
       display: none;
     }
 
-    & .vega-sidebar-footer span {
-      display: none;
-    }
+
 
     & .vega-sidebar-sub-items {
       display: none;
@@ -172,7 +170,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px;
+  padding: 10px 12px;
   text-decoration: none;
   color: var(--sidebar-text);
   font-weight: 500;
