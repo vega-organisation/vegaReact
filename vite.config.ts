@@ -11,6 +11,12 @@ export default defineConfig({
       insertTypesEntry: true,
       tsconfigPath: resolve(__dirname, "tsconfig.app.json"),
       include: ["src/components/**/*", "src/index.ts"],
+      exclude: [
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx",
+        "src/**/*.stories.ts",
+        "src/**/*.stories.tsx",
+      ],
     }),
   ],
   build: {
